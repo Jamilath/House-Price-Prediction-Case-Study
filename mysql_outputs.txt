@@ -1,0 +1,40 @@
+15:15:36	SHOW CREATE TABLE makaan_property_location_details	1 row(s) returned	0.031 sec / 0.000 sec
+
+
+
+15:16:24	SELECT Property_id, Property_Name, Property_type, Price, Size, No_of_BHK, Posted_On FROM makaan_properties_details LIMIT 5	5 row(s) returned	0.000 sec / 0.000 sec
+
+
+
+
+15:16:50	SELECT Property_id, City_name, Locality_Name, Latitude, Longitude FROM makaan_property_location_details LIMIT 5	5 row(s) returned	0.000 sec / 0.000 sec
+
+
+
+
+15:17:15	SELECT p.Property_id, p.Property_Name, p.Price, p.Size, p.No_of_BHK, l.City_name, l.Locality_Name FROM makaan_properties_details p JOIN makaan_property_location_details l ON p.Property_id = l.Property_id LIMIT 5	5 row(s) returned	0.000 sec / 0.000 sec
+
+
+
+15:17:43	SELECT Posted_On, COUNT(*)  FROM makaan_properties_details  GROUP BY Posted_On ORDER BY COUNT(*) DESC LIMIT 10	10 row(s) returned	2.234 sec / 0.000 sec
+
+
+
+
+15:18:12	SELECT      SUM(Price IS NULL) AS price_nulls,     SUM(Size IS NULL) AS size_nulls,     SUM(No_of_BHK IS NULL) AS bhk_nulls,     SUM(Price_per_unit_area IS NULL) AS price_per_unit_area_nulls,     SUM(Builder_name IS NULL) AS builder_name_nulls,     SUM(builder_id IS NULL) AS builder_id_nulls FROM makaan_properties_details LIMIT 0, 1000	1 row(s) returned	2.344 sec / 0.000 sec
+
+
+
+15:18:41	SELECT Price_per_unit_area FROM makaan_properties_details LIMIT 10	10 row(s) returned	0.000 sec / 0.000 sec
+
+
+
+15:19:03	SELECT * FROM predicted_prices LIMIT 5	5 row(s) returned	0.016 sec / 0.000 sec
+
+
+
+15:19:25	SELECT * FROM temp_predictions LIMIT 0, 1000	5 row(s) returned	0.000 sec / 0.000 sec
+
+
+15:19:56	SELECT Builder_name, COUNT(*) AS property_count, AVG(Price) AS avg_price FROM makaan_properties_details WHERE Builder_name != 'Unknown' GROUP BY Builder_name ORDER BY property_count DESC LIMIT 5	5 row(s) returned	2.734 sec / 0.000 sec
+
